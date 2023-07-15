@@ -13,6 +13,7 @@ import com.bca.weatherinformer.model.WeatherResponse;
 import com.bca.weatherinformer.services.WeatherService;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.GsonBuilder;
+import com.squareup.picasso.Picasso;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -140,6 +141,9 @@ public class WeatherInformationActivity extends AppCompatActivity {
         return pop + "% (Precipitation)";
     }
 
+    private String getIconUrl(String iconId) {
+        return "https://cdn.weatherbit.io/static/img/icons/" + iconId + ".png";
+    }
     private void renderWeatherInfo(WeatherResponse weatherResponse) {
         cityNameTV.setText(weatherResponse.getCityName());
 
@@ -150,25 +154,30 @@ public class WeatherInformationActivity extends AppCompatActivity {
         windSpeedTV.setText(formatWindSpeed(currentDay.getWindSpd()));
         pressureTV.setText(formatPressure(currentDay.getPres()));
         popTV.setText(formatPrecipitation(currentDay.getPop()));
+        Picasso.get().load(getIconUrl(currentDay.getWeather().getIcon())).into(currentWeatherIV);
 
         DayForecast day1Forecast = weatherResponse.getData().get(1);
         day1TitleTV.setText(getDayTitle(day1Forecast.getValidDate()));
         day1MaxTempTV.setText(formatTemperature(day1Forecast.getMaxTemp()));
         day1MinTempTV.setText(formatTemperature(day1Forecast.getMinTemp()));
+        Picasso.get().load(getIconUrl(day1Forecast.getWeather().getIcon())).into(day1IconIV);
 
         DayForecast day2Forecast = weatherResponse.getData().get(2);
         day2TitleTV.setText(getDayTitle(day2Forecast.getValidDate()));
         day2MaxTempTV.setText(formatTemperature(day2Forecast.getMaxTemp()));
         day2MinTempTV.setText(formatTemperature(day2Forecast.getMinTemp()));
+        Picasso.get().load(getIconUrl(day2Forecast.getWeather().getIcon())).into(day2IconIV);
 
         DayForecast day3Forecast = weatherResponse.getData().get(3);
         day3TitleTV.setText(getDayTitle(day3Forecast.getValidDate()));
         day3MaxTempTV.setText(formatTemperature(day3Forecast.getMaxTemp()));
         day3MinTempTV.setText(formatTemperature(day3Forecast.getMinTemp()));
+        Picasso.get().load(getIconUrl(day3Forecast.getWeather().getIcon())).into(day3IconIV);
 
         DayForecast day4Forecast = weatherResponse.getData().get(4);
         day4TitleTV.setText(getDayTitle(day4Forecast.getValidDate()));
         day4MaxTempTV.setText(formatTemperature(day4Forecast.getMaxTemp()));
         day4MinTempTV.setText(formatTemperature(day4Forecast.getMinTemp()));
+        Picasso.get().load(getIconUrl(day4Forecast.getWeather().getIcon())).into(day4IconIV);
     }
 }
