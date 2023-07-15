@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         mHandler.postDelayed(() -> {
-            Intent intent = new Intent(MainActivity.this, LoadCurrentLocationActivity.class);
+            Intent intent = new Intent(MainActivity.this, SelectLocationActivity.class);
             finish();
             startActivity(intent);
         }, 3000);
