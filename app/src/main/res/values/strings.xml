@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Weather Informer</string>
+    <string name="fetching_location_message">Getting your current location\nMake sure you have turned on your GPS</string>
+</resources>
